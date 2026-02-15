@@ -635,7 +635,7 @@ static int qcom_pas_alloc_memory_region(struct qcom_pas *pas)
 
 	pas->mem_phys = pas->mem_reloc = res.start;
 	pas->mem_size = resource_size(&res);
-	pas->mem_region = devm_ioremap_resource_wc(pas->dev, &res);
+	pas->mem_region = devm_ioremap_wc(pas->dev, pas->mem_phys, pas->mem_size);
 	if (IS_ERR(pas->mem_region)) {
 		dev_err(pas->dev, "unable to map memory region: %pR\n", &res);
 		return PTR_ERR(pas->mem_region);
