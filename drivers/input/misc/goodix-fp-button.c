@@ -121,4 +121,4 @@ module_platform_driver(goodix_fp_button_driver);
 
 MODULE_AUTHOR("Barnabas Czeman");
 MODULE_DESCRIPTION("Goodix fingerprint sensor button driver");
-MODULE_LICENSE("GPL-2.0");
+MODULE_LICENSE("GPL");
