@@ -381,6 +381,18 @@ config INPUT_GPIO_VIBRA
 	  To compile this driver as a module, choose M here: the module will be
 	  called gpio-vibra.
 
+config INPUT_GOODIX_FP_BUTTON
+	tristate "Goodix fingerprint sensor button"
+	depends on GPIOLIB || COMPILE_TEST
+	help
+	  Say Y here to expose the touch status of a Goodix fingerprint
+	  sensor (connected via reset and interrupt GPIOs) as a plain
+	  input device, allowing the fingerprint pad to be used as a
+	  hardware key.
+
+	  To compile this driver as a module, choose M here: the module will
+	  be called goodix-fp-button.
+
 config INPUT_COBALT_BTNS
 	tristate "Cobalt button interface"
 	depends on MIPS_COBALT
