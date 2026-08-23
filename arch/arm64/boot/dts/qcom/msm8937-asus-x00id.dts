@@ -108,7 +108,7 @@
 
 		reset-gpios = <&tlmm 2 GPIO_ACTIVE_HIGH>;
 		irq-gpios = <&tlmm 1 GPIO_ACTIVE_HIGH>;
-		linux,code = <KEY_HOMEPAGE>;
+		linux,code = <KEY_LEFTMETA>;
 
 		pinctrl-0 = <&fp_irq_default>, <&fp_reset_default>;
 		pinctrl-names = "default";
