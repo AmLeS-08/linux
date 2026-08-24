@@ -103,16 +103,7 @@
 
 
 
-	goodix_fp: goodix-fp {
-		compatible = "goodix,fp-button";
 
-		reset-gpios = <&tlmm 2 GPIO_ACTIVE_HIGH>;
-		irq-gpios = <&tlmm 1 GPIO_ACTIVE_HIGH>;
-		linux,code = <KEY_LEFTMETA>;
-
-		pinctrl-0 = <&fp_irq_default>, <&fp_reset_default>;
-		pinctrl-names = "default";
-	};
 
 	vph_pwr: vph-pwr-regulator {
 		compatible = "regulator-fixed";
@@ -587,20 +578,6 @@
 &tlmm {
 	gpio-reserved-ranges = <0 1>, <3 1>, <20 4>;
 
-	fp_irq_default: fp-irq-default-state {
-		pins = "gpio1";
-		function = "gpio";
-		drive-strength = <2>;
-		bias-disable;
-	};
-
-	fp_reset_default: fp-reset-default-state {
-		pins = "gpio2";
-		function = "gpio";
-		drive-strength = <2>;
-		bias-disable;
-		output-high;
-	};
 
 
 	cam_sensor_rear_default: cam-sensor-rear-default-state {
