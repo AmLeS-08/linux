@@ -559,7 +559,7 @@
 };
 
 &sound {
-	model = "ZenFone 4 Max";
+	model = "xiaomi-land";
 
 	aux-devs = <&speaker_amp>, <&headphones_switch>;
 	widgets =
