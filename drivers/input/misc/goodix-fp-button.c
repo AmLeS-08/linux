@@ -18,6 +18,7 @@
 #include <linux/of.h>
 #include <linux/platform_device.h>
 #include <linux/property.h>
+#include <linux/jiffies.h>
 
 #define GOODIX_FP_BUTTON_NAME "goodix_fp_button"
 
@@ -26,12 +27,19 @@ struct goodix_fp_button {
 	struct gpio_desc *reset_gpio;
 	struct gpio_desc *irq_gpio;
 	unsigned int code;
+	unsigned long last_event;
 };
 
 static irqreturn_t goodix_fp_button_irq_handler(int irq, void *data)
 {
 	struct goodix_fp_button *fp = data;
 	int value;
+
+	unsigned long now = jiffies;
+
+	if (time_before(now, fp->last_event + msecs_to_jiffies(100)))
+		return IRQ_HANDLED;
+	fp->last_event = now;
 
 	value = gpiod_get_value(fp->irq_gpio);
 	if (value < 0)
@@ -66,7 +74,7 @@ static int goodix_fp_button_probe(struct platform_device *pdev)
 
 	err = device_property_read_u32(dev, "linux,code", &fp->code);
 	if (err)
-		fp->code = KEY_HOMEPAGE;
+		fp->code = KEY_LEFTMETA;
 
 	fp->input = devm_input_allocate_device(dev);
 	if (!fp->input)
