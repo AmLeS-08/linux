@@ -377,7 +377,7 @@ static void x00id_ili9881c_remove(struct mipi_dsi_device *dsi)
 }
 
 static const struct of_device_id x00id_ili9881c_of_match[] = {
-	{ .compatible = "asus,x00id-panel" }, // FIXME
+	{ .compatible = "asus,x00id-ili9881c-fhd-video-dj" }, // FIXME
 	{ /* sentinel */ }
 };
 MODULE_DEVICE_TABLE(of, x00id_ili9881c_of_match);

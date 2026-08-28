@@ -308,7 +308,7 @@
 	status = "okay";
 
 	panel@0 {
-		compatible = "asus,x00id-panel";
+		compatible = "asus,x00id-ili9881c-fhd-video-dj";
 		reg = <0>;
 
 		reset-gpios = <&tlmm 60 GPIO_ACTIVE_LOW>;
